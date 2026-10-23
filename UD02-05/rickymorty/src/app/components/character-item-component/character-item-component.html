@@ -1,0 +1,8 @@
+<div class="card h-100 shadow-sm text-center">
+    <img [src]="character()!.image" class="card-img-top p-3" [alt]="character()!.name">
+    <div class="card-body">
+        <span class="badge bg-secondary mb-2">#{{ character()!.id }}</span>
+        <h5 class="card-tittle text-capitalize">{{ character()!.name }}</h5>
+        <p class="card-text text-muted">{{ character()!.type }}</p>
+    </div>
+</div>

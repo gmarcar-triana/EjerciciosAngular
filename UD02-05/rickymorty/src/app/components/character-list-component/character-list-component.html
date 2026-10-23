@@ -1,0 +1,10 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Lista de Personajes</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-5">
+        @for(item of characterList(); track item.id) {
+            <div>
+                <app-character-item-component [character]="item"></app-character-item-component>
+            </div>
+        }
+    </div>
+</div>
