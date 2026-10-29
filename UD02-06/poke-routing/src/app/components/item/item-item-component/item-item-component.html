@@ -1,0 +1,8 @@
+<a [routerLink]="['/items', id()]" class="text-decoration-none text-dark">
+    <div class="card h-100 shadow-sm text-center" style="width: 180px">
+        <img [src]="image()" class="card-img-top p-3 mx-auto" [alt]="item().name">
+        <div class="card-body">
+            <h5 class="card-title text-capitalize">{{ item().name }}</h5>
+        </div>
+    </div>
+</a>

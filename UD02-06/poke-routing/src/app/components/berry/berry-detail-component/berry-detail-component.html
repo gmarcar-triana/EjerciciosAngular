@@ -1,0 +1,31 @@
+<div class="container my-4">
+    <a routerLink="/berries" class="btn btn-outline-secondary mb-3">&larr; Volver al listado</a>
+    @if (berry(); as berry) {
+        <div class="card shadow-sm">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-4 text-center p-3">
+                    <img [src]="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${berry.name}-berry.png`" class="img-fluid" style="max-height: 280px" [alt]="berry.name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title text-capitalize">{{ berry.name }}</h2>
+            <p class="mb-1"><strong>ID:</strong> {{ berry.id }}</p>
+            <p class="mb-1"><strong>Tiempo de crecimiento:</strong> {{ berry.growth_time }} h</p>
+            <p class="mb-1"><strong>Cosecha máxima:</strong> {{ berry.max_harvest }}</p>
+            <p class="mb-1"><strong>Tamaño:</strong> {{ berry.size }} mm</p>
+            <p class="mb-1"><strong>Suavidad:</strong> {{ berry.smoothness }}</p>
+            <p class="mb-1"><strong>Firmeza:</strong> <span class="text-capitalize">{{ berry.firmness.name }}</span></p>
+            <h6 class="mt-3">Sabores</h6>
+            <ul class="list-unstyled">
+                @for (f of berry.flavors; track f.flavor.name) {
+                    <li class="text-capitalize">{{ f.flavor.name }}: {{ f.potency }}</li>
+                }
+            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    } @else {
+        <p class="text-center">Cargando...</p>
+    }
+</div>

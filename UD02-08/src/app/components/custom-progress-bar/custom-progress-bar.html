@@ -1,0 +1,19 @@
+<div
+  class="progress"
+  role="progressbar"
+  [style.height.px]="height()"
+  [attr.aria-valuenow]="percentage()"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div
+    class="progress-bar"
+    [class]="'bg-' + color()"
+    [class.progress-bar-striped]="striped()"
+    [style.width.%]="percentage()"
+  >
+    @if (showLabel()) {
+      {{ percentage() }}%
+    }
+  </div>
+</div>

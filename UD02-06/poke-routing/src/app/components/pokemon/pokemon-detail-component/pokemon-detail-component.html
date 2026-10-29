@@ -1,0 +1,39 @@
+<div class="container my-4">
+    <a routerLink="/pokemon" class="btn btn-outline-secondary mb-3">&larr; Volver al listado</a>
+    @if (pokemon(); as pokemon) {
+        <div class="card shadow-sm">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-4 text-center p-3">
+                    <img [src]="pokemon.sprites.other?.['official-artwork']?.front_default ?? pokemon.sprites.front_default" class="img-fluid" style="max-height: 280px" [alt]="pokemon.name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h2 class="card-title text-capitalize">{{ pokemon.name }}</h2>
+            <p class="mb-1"><strong>ID:</strong> {{ pokemon.id }}</p>
+            <p class="mb-1"><strong>Altura:</strong> {{ pokemon.height / 10 }} m</p>
+            <p class="mb-1"><strong>Peso:</strong> {{ pokemon.weight / 10 }} kg</p>
+            <p class="mb-1"><strong>Experiencia base:</strong> {{ pokemon.base_experience }}</p>
+            <p class="mb-1"><strong>Tipos:</strong>
+                @for (t of pokemon.types; track t.slot) {
+                    <span class="badge bg-primary me-1 text-capitalize">{{ t.type.name }}</span>
+                }
+            </p>
+            <p class="mb-1"><strong>Habilidades:</strong>
+                @for (a of pokemon.abilities; track a.ability.name) {
+                    <span class="badge bg-secondary me-1 text-capitalize">{{ a.ability.name }}</span>
+                }
+            </p>
+            <h6 class="mt-3">Estadísticas</h6>
+            <ul class="list-unstyled">
+                @for (s of pokemon.stats; track s.stat.name) {
+                    <li class="text-capitalize">{{ s.stat.name }}: {{ s.base_stat }}</li>
+                }
+            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    } @else {
+        <p class="text-center">Cargando...</p>
+    }
+</div>

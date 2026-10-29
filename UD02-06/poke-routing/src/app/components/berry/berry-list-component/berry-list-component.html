@@ -1,0 +1,10 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Berries</h2>
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+        @for (item of list(); track item.name) {
+            <div>
+                <app-berry-item-component [berry]="item"></app-berry-item-component>
+            </div>
+        }
+    </div>
+</div>
