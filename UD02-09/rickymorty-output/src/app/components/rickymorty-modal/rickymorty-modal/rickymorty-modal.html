@@ -1,0 +1,13 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{ rickymortyDetail?.name }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <img [src]="rickymortyDetail?.image" class="card-img-top mb-3" [alt]="rickymortyDetail?.name">
+    <p>Species: {{ rickymortyDetail?.species }}</p>
+    <p>Status: {{ rickymortyDetail?.status }}</p>
+    <p>Origin: {{ rickymortyDetail?.origin?.name }}</p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close()">Close</button>
+</div>
