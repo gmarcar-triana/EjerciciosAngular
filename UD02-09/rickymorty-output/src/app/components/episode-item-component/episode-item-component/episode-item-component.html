@@ -1,0 +1,7 @@
+<section class="card h-100">
+    <div class="card-body">
+        <h4 class="card-title">{{episode()?.name}}</h4>
+        <p class="card-text">{{episode()?.episode}} - {{episode()?.air_date}}</p>
+        <button type="button" class="btn btn-primary" (click)="emitEpisodeClicked()">View detail</button>
+    </div>
+</section>

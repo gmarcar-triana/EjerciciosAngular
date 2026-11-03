@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<div class="btn-group my-3" role="group">
+    <button type="button" class="btn" [class.btn-primary]="view() === 'characters'"
+        [class.btn-outline-primary]="view() !== 'characters'" (click)="view.set('characters')">Characters</button>
+    <button type="button" class="btn" [class.btn-primary]="view() === 'episodes'"
+        [class.btn-outline-primary]="view() !== 'episodes'" (click)="view.set('episodes')">Episodes</button>
+</div>
+
+@if (view() === 'characters') {
+<app-rickymorty-list-component></app-rickymorty-list-component>
+} @else {
+<app-episode-list-component></app-episode-list-component>
+}
