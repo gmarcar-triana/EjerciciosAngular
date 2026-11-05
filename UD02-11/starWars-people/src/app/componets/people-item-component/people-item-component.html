@@ -1,0 +1,7 @@
+<section class="card h-100">
+  <div class="card-body">
+    <h4 class="card-title">{{ people()?.name }}</h4>
+    <p class="card-text">{{ people()?.gender }} - {{ people()?.birth_year }}</p>
+    <button type="button" class="btn btn-primary" (click)="emitPeopleClicked()">View detail</button>
+  </div>
+</section>

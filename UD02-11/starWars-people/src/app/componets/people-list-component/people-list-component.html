@@ -1,0 +1,18 @@
+<h1 class="my-3">Star Wars</h1>
+
+@if (loading()) {
+  <p>Cargando personajes...</p>
+} @else if (error()) {
+  <div class="alert alert-danger">No se han podido cargar los personajes.</div>
+} @else {
+  <div class="row g-3">
+    @for (p of peopleList(); track p.url) {
+      <div class="col-md-3">
+        <app-people-item-component
+          [people]="p"
+          (peopleClicked)="openPeopleModal($event)"
+        ></app-people-item-component>
+      </div>
+    }
+  </div>
+}
