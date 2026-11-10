@@ -1,0 +1,75 @@
+<div class="container my-4">
+  <h1 class="mb-4">Nueva publicación</h1>
+
+  <form [formGroup]="form" (ngSubmit)="sendForm()" novalidate>
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" id="title" class="form-control" [class.is-invalid]="isInvalid('title')"
+        formControlName="title" placeholder="Título de la publicación">
+      @if (isInvalid('title')) {
+        <div class="invalid-feedback">El título es obligatorio (mínimo 3 caracteres).</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Descripción</label>
+      <textarea id="description" rows="4" class="form-control" [class.is-invalid]="isInvalid('description')"
+        formControlName="description" placeholder="Describe la publicación"></textarea>
+      @if (isInvalid('description')) {
+        <div class="invalid-feedback">La descripción es obligatoria (mínimo 10 caracteres).</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Categoría</label>
+      <select id="category" class="form-select" [class.is-invalid]="isInvalid('category')" formControlName="category">
+        <option value="" disabled>Selecciona una categoría</option>
+        @for (c of categories; track c) {
+          <option [value]="c">{{ c }}</option>
+        }
+      </select>
+      @if (isInvalid('category')) {
+        <div class="invalid-feedback">Selecciona una categoría.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="tags" class="form-label">Etiquetas</label>
+      <input type="text" id="tags" class="form-control" formControlName="tags" placeholder="angular, formularios, web">
+      <div class="form-text">Separadas por comas.</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email del autor</label>
+      <input type="email" id="email" class="form-control" [class.is-invalid]="isInvalid('email')"
+        formControlName="email" placeholder="autor@email.com">
+      @if (isInvalid('email')) {
+        <div class="invalid-feedback">Introduce un email válido.</div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <div class="form-check form-switch">
+        <input type="checkbox" id="publishNow" class="form-check-input" role="switch" formControlName="publishNow">
+        <label for="publishNow" class="form-check-label">Publicar ahora</label>
+      </div>
+    </div>
+
+    @if (!form.controls.publishNow.value) {
+      <div class="mb-3">
+        <label for="publishDate" class="form-label">Fecha de publicación</label>
+        <div class="input-group">
+          <input id="publishDate" class="form-control" [class.is-invalid]="isInvalid('publishDate')"
+            placeholder="yyyy-mm-dd" ngbDatepicker #d="ngbDatepicker" formControlName="publishDate">
+          <button class="btn btn-outline-secondary" type="button" (click)="d.toggle()">📅</button>
+          @if (isInvalid('publishDate')) {
+            <div class="invalid-feedback">Selecciona una fecha para programar la publicación.</div>
+          }
+        </div>
+      </div>
+    }
+
+    <button type="submit" class="btn btn-primary me-2">Publicar</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="resetForm()">Limpiar</button>
+  </form>
+</div>
